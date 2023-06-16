@@ -14,7 +14,7 @@ np.set_printoptions(suppress=True)
 
 if len(sys.argv) != 3 and len(sys.argv) != 5:
     sys.stderr.write("Arguments error. Usage:\n")
-    sys.stderr.write("\tpython featurization.py data-dir-path features-dir-path\n")
+    sys.stderr.write("\tpython3 featurization.py data-dir-path features-dir-path\n")
     sys.exit(1)
 
 train_input = os.path.join(sys.argv[1], "train.tsv")

@@ -26,23 +26,23 @@ stages:
       size: 8437363
       nfiles: 2
     - path: src/featurization.py
-      md5: e0265fc22f056a4b86d85c3056bc2894
-      size: 2490
+      md5: 0b482f0c397320227765e743dd947ebb
+      size: 2491
     params:
       params.yaml:
-        featurize.max_features: 200
+        featurize.max_features: 150
         featurize.ngrams: 2
     outs:
     - path: data/features
-      md5: f35d4cc2c552ac959ae602162b8543f3.dir
-      size: 2232588
+      md5: 8e55ff5b029606f774ccd57e1c4b3576.dir
+      size: 1981982
       nfiles: 2
   train:
     cmd: python src/train.py data/features model.pkl
     deps:
     - path: data/features
-      md5: f35d4cc2c552ac959ae602162b8543f3.dir
-      size: 2232588
+      md5: 8e55ff5b029606f774ccd57e1c4b3576.dir
+      size: 1981982
       nfiles: 2
     - path: src/train.py
       md5: c3961d777cfbd7727f9fde4851896006
@@ -54,33 +54,33 @@ stages:
         train.seed: 20170428
     outs:
     - path: model.pkl
-      md5: 9547963acb6787d53fc3e5dc6a14a34e
-      size: 1763779
+      md5: 10c6a629f08651d50fb6ef627f05f04d
+      size: 1714621
   evaluate:
     cmd: python src/evaluate.py model.pkl data/features
     deps:
     - path: data/features
-      md5: f35d4cc2c552ac959ae602162b8543f3.dir
-      size: 2232588
+      md5: 8e55ff5b029606f774ccd57e1c4b3576.dir
+      size: 1981982
       nfiles: 2
     - path: model.pkl
-      md5: 9547963acb6787d53fc3e5dc6a14a34e
-      size: 1763779
+      md5: 10c6a629f08651d50fb6ef627f05f04d
+      size: 1714621
     - path: src/evaluate.py
       md5: e538db1a5c3bb59f954b642fb7d2af1e
       size: 3304
     outs:
     - path: eval/importance.png
-      md5: 4c15497f97f46a7dc16c37dc9f78b266
-      size: 34065
+      md5: ef939890fbe298dc369810bff4bd32d5
+      size: 33842
     - path: eval/live/metrics.json
-      md5: 97147dd5cb0e159c34152950b0bf1309
-      size: 195
+      md5: 2c78c1eac37e69669dd1a46adea81490
+      size: 196
     - path: eval/live/plots
-      md5: dfebe229beecacbcb381a4b0e76dfdac.dir
-      size: 747258
+      md5: a24a81e5b30cb49558c4cb9a0d2b930e.dir
+      size: 763749
       nfiles: 4
     - path: eval/prc
-      md5: 328edf8b5f33766d32469580d665608b.dir
-      size: 297858
+      md5: 455576535815eb4294afd9af5d79994c.dir
+      size: 295542
       nfiles: 2
